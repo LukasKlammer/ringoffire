@@ -1,0 +1,23 @@
+.player {
+  width: 300px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background-color: orange;
+  border-top-left-radius: 50px;
+  border-bottom-left-radius: 50px;
+  img {
+    width: 100px;
+    height: auto;
+    object-fit: cover;
+    border-radius: 100%;
+  }
+  span {
+    font-size: 32px;
+  }
+}
+
+.player-position {
+  position: absolute;
+  right: 0;
+}
