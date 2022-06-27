@@ -4,13 +4,13 @@
   align-items: center;
   gap: 16px;
   background-color: orange;
-  border-top-left-radius: 50px;
-  border-bottom-left-radius: 50px;
+  border-top-left-radius: 45px;
+  border-bottom-left-radius: 45px;
   img {
-    width: 100px;
+    width: 80px;
+    padding: 10px;
     height: auto;
     object-fit: cover;
-    border-radius: 100%;
   }
   span {
     font-size: 32px;
