@@ -23,6 +23,23 @@
 }
 
 .player-active {
-  background-color: orange;
+  background-color: orange !important;
   font-weight: bold
+}
+
+@media (max-width: 1000px) {
+  .player {
+    width: 300px;
+    gap: 12px;
+    background-color: #5454547c;
+    border-top-left-radius: 22px;
+    border-bottom-left-radius: 22px;
+    img {
+      width: 40px;
+      padding: 4px;
+    }
+    span {
+      font-size: 24px;
+    }
+  }
 }

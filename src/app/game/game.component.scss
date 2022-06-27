@@ -72,3 +72,45 @@
   left: 100px;
   right: 100px;
 }
+
+@media (max-width: 1000px) {
+  .field {
+    position: relative;
+  }
+
+  .card-stack {
+    position: absolute;
+    bottom: 450px;
+    left: 180px;
+  }
+
+  .pin-bottom {
+    bottom: 32px;
+    left: 32px;
+    right: 100px;
+  }
+
+  @keyframes pick-card-animation {
+    0% {
+      transform: scale(1);
+    }
+
+    40% {
+      transform: scale(1.5);
+    }
+
+    60% {
+      transform: scale(1.5);
+    }
+
+    100% {
+      transform: scale(1.1) translateX(160px) translateY(-50px) rotate(-10deg);
+    }
+  }
+
+  .played-card {
+    transform: scale(1.1) translateX(160px) translateY(-50px) rotate(-10deg);
+    right: 25px;
+  }
+
+}

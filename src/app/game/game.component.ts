@@ -24,7 +24,9 @@ export class GameComponent implements OnInit {
   }
 
   takeCard() {
-    if (!this.pickCardAnimation && this.game.players.length >= 2) {
+    if (this.game.stack.length <= 1) {
+      alert ('Alle Karten aufgebraucht. Nun solltet ihr aufhören, zu trinken ;-)')
+    } else if (!this.pickCardAnimation && this.game.players.length >= 2) {
       this.pickCardAnimation = true;
       this.currentCard = this.game.stack.pop();
       this.game.currentPlayer++;
