@@ -21,10 +21,10 @@
       src="../../assets/img/cards/{{ currentCard }}.png" alt="">
   </div>
 
+  <app-game-info *ngIf="currentCard" [card]="currentCard" class="pin-bottom"></app-game-info>
+
   <button class="btn-add" mat-fab color="primary" (click)="openDialog()">
     <mat-icon>add</mat-icon>
   </button>
-
-  <app-game-info class="pin-bottom"></app-game-info>
 
 </div>

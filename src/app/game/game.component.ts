@@ -17,12 +17,10 @@ export class GameComponent implements OnInit {
 
   ngOnInit(): void {
     this.newGame();
-    console.log(this.game);
   }
 
   newGame() {
     this.game = new Game();
-    console.log(this.game);
   }
 
   takeCard() {
@@ -38,7 +36,6 @@ export class GameComponent implements OnInit {
 
   openDialog(): void {
     const dialogRef = this.dialog.open(DialogAddPlayerComponent, {
-
     });
 
     dialogRef.afterClosed().subscribe((name:string) => {
