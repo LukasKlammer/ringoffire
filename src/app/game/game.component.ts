@@ -24,7 +24,7 @@ export class GameComponent implements OnInit {
   }
 
   takeCard() {
-    if (!this.pickCardAnimation) {
+    if (!this.pickCardAnimation && this.game.players.length >= 2) {
       this.pickCardAnimation = true;
       this.currentCard = this.game.stack.pop();
       this.game.currentPlayer++;
@@ -41,7 +41,7 @@ export class GameComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe((name:string) => {
-      if (name && name.length < 0) {
+      if (name) {
         this.game.players.push(name);
       }
     });
