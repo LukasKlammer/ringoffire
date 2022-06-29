@@ -5,7 +5,7 @@ import { StartScreenComponent } from './start-screen/start-screen.component';
 
 const routes: Routes = [
   { path: '', component: StartScreenComponent, pathMatch: 'full' },
-  { path: 'game', component: GameComponent },
+  { path: 'game/:id', component: GameComponent }, // :id bedeutet, dass der Pfad nach dem / variabel ist
   { path: '**', component: StartScreenComponent }
 ];
 

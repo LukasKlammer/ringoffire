@@ -5,6 +5,9 @@ import { DialogAddPlayerComponent } from '../dialog-add-player/dialog-add-player
 import { Observable } from 'rxjs';
 import { collectionData, Firestore } from '@angular/fire/firestore';
 import { collection, doc, setDoc } from '@firebase/firestore';
+import { ActivatedRoute } from '@angular/router';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
+
 
 @Component({
   selector: 'app-game',
@@ -17,23 +20,43 @@ export class GameComponent implements OnInit {
   currentCard: string;
   games$: Observable<any>;
 
-  constructor(private firestore: Firestore, public dialog: MatDialog) {
-    const coll:any = collection(firestore, 'games');
-    this.games$ = collectionData(coll);
-
-    this.games$.subscribe((newGames) => {
-      console.log('Games sind, ', newGames)
-    });
-  }
+  constructor(private route: ActivatedRoute, private firestore: AngularFirestore, public dialog: MatDialog) {  }
 
   ngOnInit(): void {
     this.newGame();
+
+    this.route.params.subscribe((params) => {
+      console.log('Die ID ist: ', params['id']);
+
+      this
+      .firestore
+      .collection('games')
+      .doc(params['id'])
+      .valueChanges();
+      .subscribe((game:any) => {
+        console.log('unser ausgewähltes Game oder alle Games', game)
+      });
+
+      // const coll:any = collection(this.firestore, 'games');
+      // this.games$ = collectionData(coll);
+
+      // this.games$.subscribe((newGames) => {
+      //   console.log('Game update, ', newGames)
+      // });
+    });
+
   }
 
   newGame() {
     this.game = new Game();
-    const coll:any = collection(this.firestore, 'games');
-    setDoc(doc(coll), { 'Hallo': 'Welt' });
+
+    this.firestore
+    .collection('games')
+    .add(this.game.toJson());
+
+    // const coll:any = collection(this.firestore, 'games');
+    // setDoc(doc(coll), this.game.toJson());
+    ;
   }
 
   takeCard() {
