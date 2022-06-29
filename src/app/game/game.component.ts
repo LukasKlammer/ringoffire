@@ -20,7 +20,7 @@ export class GameComponent implements OnInit {
   currentCard: string;
   games$: Observable<any>;
 
-  constructor(private route: ActivatedRoute, private firestore: AngularFirestore, public dialog: MatDialog) {  }
+  constructor(private route: ActivatedRoute, private firestore: AngularFirestore, public dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.newGame();
@@ -28,21 +28,21 @@ export class GameComponent implements OnInit {
     this.route.params.subscribe((params) => {
       console.log('Die ID ist: ', params['id']);
 
-      this
-      .firestore
-      .collection('games')
-      .doc(params['id'])
-      .valueChanges();
-      .subscribe((game:any) => {
-        console.log('unser ausgewähltes Game oder alle Games', game)
+      this.firestore
+        .collection('games')
+        .doc(params['id'])
+        .valueChanges()
+        .subscribe((game:any) => {
+          console.log('unser ausgewähltes Game oder alle Games', game)
       });
 
-      // const coll:any = collection(this.firestore, 'games');
-      // this.games$ = collectionData(coll);
+      //   const coll:any = collection(this.firestore, 'games');
+      //   this.games$ = collectionData(coll);
 
-      // this.games$.subscribe((newGames) => {
-      //   console.log('Game update, ', newGames)
-      // });
+      //   this.games$.subscribe((newGames) => {
+      //     console.log('Game update, ', newGames)
+      //   });
+
     });
 
   }
@@ -50,13 +50,13 @@ export class GameComponent implements OnInit {
   newGame() {
     this.game = new Game();
 
-    this.firestore
-    .collection('games')
-    .add(this.game.toJson());
+    // this.firestore
+    // .collection('games')
+    // .add(this.game.toJson());
 
     // const coll:any = collection(this.firestore, 'games');
     // setDoc(doc(coll), this.game.toJson());
-    ;
+
   }
 
   takeCard() {
