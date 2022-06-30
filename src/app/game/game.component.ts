@@ -3,8 +3,6 @@ import { Game } from '../models/game';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogAddPlayerComponent } from '../dialog-add-player/dialog-add-player.component';
 import { Observable } from 'rxjs';
-import { collectionData, Firestore } from '@angular/fire/firestore';
-import { collection, doc, setDoc } from '@firebase/firestore';
 import { ActivatedRoute } from '@angular/router';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 
@@ -35,14 +33,6 @@ export class GameComponent implements OnInit {
         .subscribe((game:any) => {
           console.log('unser ausgewähltes Game oder alle Games', game)
       });
-
-      //   const coll:any = collection(this.firestore, 'games');
-      //   this.games$ = collectionData(coll);
-
-      //   this.games$.subscribe((newGames) => {
-      //     console.log('Game update, ', newGames)
-      //   });
-
     });
 
   }
@@ -50,12 +40,9 @@ export class GameComponent implements OnInit {
   newGame() {
     this.game = new Game();
 
-    // this.firestore
-    // .collection('games')
-    // .add(this.game.toJson());
-
-    // const coll:any = collection(this.firestore, 'games');
-    // setDoc(doc(coll), this.game.toJson());
+    this.firestore
+    .collection('games')
+    .add(this.game.toJson());
 
   }
 

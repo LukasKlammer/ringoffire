@@ -19,8 +19,9 @@ import { MatCardModule } from '@angular/material/card';
 import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
 import { provideAuth,getAuth } from '@angular/fire/auth';
-import { provideDatabase,getDatabase } from '@angular/fire/database';
-import { provideFirestore,getFirestore } from '@angular/fire/firestore';
+import { provideDatabase,getDatabase } from '@angular/fire/database'; // new method
+// import { provideFirestore,getFirestore } from '@angular/fire/firestore'; // new method, not working: replace this line with code below
+import { AngularFireModule } from '@angular/fire/compat';
 // import { AngularFireModule } from '@angular/fire/compat'; veraltete Syntax
 
 @NgModule({
@@ -43,13 +44,16 @@ import { provideFirestore,getFirestore } from '@angular/fire/firestore';
     FormsModule,
     MatInputModule,
     MatCardModule,
-    // AngularFireModule.initializeApp(environment.firebase), veraltete Syntax
-    provideFirebaseApp(() => initializeApp(environment.firebase)),
-    provideAuth(() => getAuth()),
-    provideDatabase(() => getDatabase()),
-    provideFirestore(() => getFirestore())
+    // AngularFireModule.initializeApp(environment.firebase), od Syntax
+    provideFirebaseApp(() => initializeApp(environment.firebase)), // new method, wurde bei Erstellung automatisch hier hinzugefügt
+    provideAuth(() => getAuth()), // new method,, wurde bei Erstellung automatisch hier hinzugefügt
+    provideDatabase(() => getDatabase()), // new method, wurde bei Erstellung automatisch hier hinzugefügt
+    //provideFirestore(() => getFirestore()), // new method, not working: replace this line with code below
+    AngularFireModule.initializeApp(environment.firebase),
   ],
-  providers: [],
+  providers: [
+
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

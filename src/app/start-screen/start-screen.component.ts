@@ -16,7 +16,6 @@ export class StartScreenComponent implements OnInit {
   }
 
   newGame() {
-
     let game = new Game();
     this.firestore
       .collection('games')
