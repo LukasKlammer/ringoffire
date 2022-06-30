@@ -88,9 +88,15 @@
   }
 
   .pin-bottom {
+    bottom: 8px;
+    left: 8px;
+    right: 86px;
+  }
+
+  .btn-add {
+    position: absolute;
+    right: 16px;
     bottom: 32px;
-    left: 32px;
-    right: 100px;
   }
 
   @keyframes pick-card-animation {

@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Game } from '../models/game';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogAddPlayerComponent } from '../dialog-add-player/dialog-add-player.component';
-import { Observable } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 
