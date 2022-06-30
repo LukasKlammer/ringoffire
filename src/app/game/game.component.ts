@@ -23,14 +23,12 @@ export class GameComponent implements OnInit {
 
     this.route.params.subscribe((params) => {
       this.gameId = params['id'];
-
       this
         .firestore
         .collection('games')
         .doc(this.gameId)
         .valueChanges()
         .subscribe((updatedGame:any) => {
-          console.log('unser upgedatetes Game', updatedGame);
           this.game.currentPlayer = updatedGame.currentPlayer;
           this.game.playedCards = updatedGame.playedCards;
           this.game.players = updatedGame.players;
@@ -76,8 +74,6 @@ export class GameComponent implements OnInit {
   }
 
   saveGame(): void {
-    console.log('Wir speichern: ' + this.game.toJson());
-
     this
       .firestore
       .collection('games')
